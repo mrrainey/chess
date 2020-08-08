@@ -8,13 +8,33 @@ import board.Tile;
  */
 public abstract class Piece {
 	
-	private Tile currentTile;
+	private Tile tile;
+	private int moves;
 	
 	public Piece(Tile t) {
-		this.currentTile = t;
+		this.tile = t;
+		this.moves = 0;
 	}
 	
 	
+	/**
+	 * Gets the amount moves this piece has made
+	 * @return the number of moves
+	 */
+	public int getMoves() {
+		return moves;
+	}
+
+
+	/**
+	 * Sets the amount of moves this piece has made
+	 * @param moves the number of moves the piece has made
+	 */
+	public void setMoves(int moves) {
+		this.moves = moves;
+	}
+
+
 	/**
 	 * Moves the piece to a tile
 	 * @param t The tile to move to
@@ -22,7 +42,7 @@ public abstract class Piece {
 	 */
 	public boolean move(Tile t) {
 		if (canMove(t)) {
-			currentTile = t;
+			tile = t;
 			return true;
 		}
 		return false;
@@ -35,4 +55,20 @@ public abstract class Piece {
 	 * 
 	 */
 	public abstract boolean canMove(Tile t);
+
+
+	/**
+	 * @return the tile
+	 */
+	public Tile getTile() {
+		return tile;
+	}
+
+
+	/**
+	 * @param tile the tile to set
+	 */
+	public void setTile(Tile tile) {
+		this.tile = tile;
+	}
 }
