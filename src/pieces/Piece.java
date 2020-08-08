@@ -42,7 +42,7 @@ public abstract class Piece {
 	 */
 	public boolean move(Tile t) {
 		if (canMove(t)) {
-			tile = t;
+			setTile(t);
 			return true;
 		}
 		return false;
@@ -70,7 +70,7 @@ public abstract class Piece {
 	 * Assigns a new tile to the piece
 	 * @param tile the tile to assign to the piece
 	 */
-	public void setTile(Tile tile) {
+	private void setTile(Tile tile) {
 		this.tile = tile;
 	}
 }
