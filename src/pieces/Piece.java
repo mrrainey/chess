@@ -58,7 +58,8 @@ public abstract class Piece {
 
 
 	/**
-	 * @return the tile
+	 * Gets the tile that this piece is currently assigned to
+	 * @return the tile that this piece is currently assigned to
 	 */
 	public Tile getTile() {
 		return tile;
@@ -66,7 +67,8 @@ public abstract class Piece {
 
 
 	/**
-	 * @param tile the tile to set
+	 * Assigns a new tile to the piece
+	 * @param tile the tile to assign to the piece
 	 */
 	public void setTile(Tile tile) {
 		this.tile = tile;
