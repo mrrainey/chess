@@ -7,7 +7,6 @@ import utilities.Colour;
 
 public class Chess {
 	public static void main(String args[]) {
-		
 		Random rand = new Random();
 		int randNum = rand.nextInt(2);
 		Colour p1Col;
@@ -30,6 +29,10 @@ public class Chess {
 		for (int x = 0; x < 8; ++x)
 			for (int y = 0; y < 8; ++y)
 				System.out.println(board.getPiece(x, y));
+		
+		while (true) {
+			
+		}
 		
 	}
 }

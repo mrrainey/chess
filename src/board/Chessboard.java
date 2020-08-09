@@ -1,5 +1,5 @@
 package board;
-
+import javax.swing.*;
 import pieces.*;
 import player.Player;
 
@@ -36,6 +36,9 @@ public class Chessboard {
 			board[row][6].setPiece(new Knight(p));
 			board[row][7].setPiece(new Rook(p));
 		}
+		
+		ChessboardGUI gui = new ChessboardGUI();
+		gui.Setup();
 	}
 
 	public Piece getPiece(int x, int y) {
