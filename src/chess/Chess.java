@@ -1,7 +1,9 @@
 package chess;
+import java.io.Console;
 import java.util.Random;
 
 import board.*;
+import pieces.Piece;
 import player.Player;
 import utilities.Colour;
 
@@ -27,9 +29,10 @@ public class Chess {
 		
 		Chessboard board = new Chessboard(p1, p2);
 		
-		for (int x = 0; x < 8; ++x)
-			for (int y = 0; y < 8; ++y)
-				System.out.println(board.getPiece(x, y));
-		
+		board.printSnapshot();
+		board.move(board.getPiece(1, 0), board.tiles[1][5]);
+		board.printSnapshot();
+				
+
 	}
 }
