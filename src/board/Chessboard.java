@@ -1,11 +1,7 @@
 package board;
 
-<<<<<<< HEAD
 import pieces.*;
 import player.Player;
-=======
-import pieces.Piece;
->>>>>>> 48959d04596d04525a409948776cd332d8728fa1
 
 /**
  * @author Matt
@@ -41,24 +37,8 @@ public class Chessboard {
 			board[row][7].setPiece(new Rook(p));
 		}
 	}
-	
-<<<<<<< HEAD
-=======
-	/**
-	 * Records the movement of a <code>Piece</code> to a new <code>Tile</code> in the game logic,
-	 * provided that the particular piece can legally move to the tile.
-	 * @param piece the <code>piece</code> to move
-	 * @param newTile the <code>tile</code> to move it to
-	 * @return whether or not the piece was able to be successfully moved to the new tile
-	 */
-	public boolean move(Piece piece, Tile newTile) {
-		if (piece.canMove(newTile)) {
-			piece.getTile().setPiece(null);
-			piece.setTile(newTile);
-			newTile.setPiece(piece);
-			return true;
-		}	
-		return false;
+
+	public Piece getPiece(int x, int y) {
+		return board[x][y].getPiece();
 	}
->>>>>>> 48959d04596d04525a409948776cd332d8728fa1
 }
