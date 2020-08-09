@@ -1,11 +1,14 @@
 package pieces;
 
 import board.Tile;
+import player.Player;
 
 public class Rook extends Piece {
 
-	public Rook(Tile t) {
-		super(t);
+
+	public Rook(Player player) {
+		super(player);
+		// TODO Auto-generated constructor stub
 	}
 
 	@Override

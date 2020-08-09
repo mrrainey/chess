@@ -1,11 +1,12 @@
 package pieces;
 
 import board.Tile;
+import player.Player;
 
 public class Pawn extends Piece {
 
-	public Pawn(Tile t) {
-		super(t);
+	public Pawn(final Player player) {
+		super(player);
 	}
 
 	@Override

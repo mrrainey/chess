@@ -1,11 +1,14 @@
 package pieces;
 
 import board.Tile;
+import player.Player;
 
 public class Queen extends Piece {
 
-	public Queen(Tile t) {
-		super(t);
+
+	public Queen(Player player) {
+		super(player);
+		// TODO Auto-generated constructor stub
 	}
 
 	@Override
