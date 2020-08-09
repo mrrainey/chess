@@ -24,11 +24,11 @@ public abstract class Piece {
 	public Piece(final Player player) {
 		this.setMoves(0);
 		this.setPlayer(player);
-		this.colour = player.getColour();
+		this.setColour(player.getColour());
 	}
 
 	/**
-	 * Determines whether a piece can legally move to a tile
+	 * Determines whether a piece can legally move to a tile. Handled by each Piece subclass.
 	 * 
 	 * @param t The tile test for a legal movement
 	 * @return true if the piece can legally move to the tile, false if not
@@ -111,5 +111,29 @@ public abstract class Piece {
 	 */
 	public void setTile(final Tile tile) {
 		this.tile = tile;
+	}
+
+	/**
+	 * Gets the colour of the piece.
+	 * 
+	 * @return the piece's colour
+	 */
+	public Colour getColour() {
+		return colour;
+	}
+
+	/**
+	 * Sets the colour of the piece.
+	 * @param colour the piece's colour
+	 */
+	public void setColour(Colour colour) {
+		this.colour = colour;
+	}
+	
+	/**
+	 * Destroys the piece so that it can no longer be used.
+	 */
+	public void kill() {
+		setTile(null);
 	}
 }
