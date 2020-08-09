@@ -116,7 +116,7 @@ public abstract class Piece {
 	 * 
 	 * @param tile the tile to assign to the piece
 	 */
-	private void setTile(final Tile tile) {
+	public void setTile(final Tile tile) {
 		this.tile = tile;
 	}
 }
