@@ -1,6 +1,7 @@
 package pieces;
 
 import board.Tile;
+import player.Player;
 
 /**
  * @author Saul
@@ -10,10 +11,27 @@ public abstract class Piece {
 
 	private Tile tile;
 	private int moves;
+	private Player player;
 
-	public Piece(final Tile t) {
-		this.tile = t;
-		this.moves = 0;
+	/**
+	 * Constructs a new <code>Piece</code> with assigned Player and initial Tile.
+	 * 
+	 * @param player the <code>Player</code> to assign the <code>Piece</code> to
+	 * @param tile the <code>Tile</code> to construct the piece on
+	 */
+	public Piece(final Player player, final Tile tile) {
+		this.setMoves(0);
+		this.setPlayer(player);
+		this.setTile(tile);
+	}
+	
+	/**
+	 * Constructs a new <code>Piece</code> with a null Player and sets the initial Tile.
+	 * 
+	 * @param tile the <code>Tile</code> to construct the piece on
+	 */
+	public Piece(final Tile tile) {
+		this(null, tile);
 	}
 
 	/**
@@ -26,15 +44,6 @@ public abstract class Piece {
 	public abstract boolean canMove(final Tile t);
 
 	/**
-	 * Gets the amount moves this piece has made
-	 * 
-	 * @return the number of moves
-	 */
-	public int getMoves() {
-		return moves;
-	}
-
-	/**
 	 * Gets an array of all the tiles that the piece can legally move to
 	 * 
 	 * @return an array of tiles that the piece can legally move to
@@ -42,7 +51,25 @@ public abstract class Piece {
 	public Tile[] getLegalMoves() {
 		return null;
 	}
+
+	/**
+	 * Gets the amount moves this piece has made
+	 * 
+	 * @return the number of moves
+	 */
+	public int getMoves() {
+		return moves;
+	}
 	
+	/**
+	 * Gets the <code>Player</code> that the piece belongs to.
+	 * 
+	 * @return the <code>Player</code> who owns the piece
+	 */
+	public Player getPlayer() {
+		return player;
+	}
+
 	/**
 	 * Gets the tile that this piece is currently assigned to
 	 * 
@@ -73,6 +100,15 @@ public abstract class Piece {
 	 */
 	public void setMoves(final int moves) {
 		this.moves = moves;
+	}
+
+	/**
+	 * Sets the <code>Player</code> that the piece belongs to.
+	 * 
+	 * @param player the <code>Player</code> who will own the piece
+	 */
+	public void setPlayer(Player player) {
+		this.player = player;
 	}
 
 	/**
