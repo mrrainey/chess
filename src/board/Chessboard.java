@@ -96,6 +96,11 @@ public class Chessboard {
 		return false;
 	}
 
+	/**
+	 * This method is intended for debugging and may be removed in the future.<br>
+	 * This method will print a snapshot of all the <code>Piece</code> positions
+	 * on the board to <code>System.out</code>.
+	 */
 	public void printSnapshot() {
 		for (int x = 0; x < 8; ++x)
 			for (int y = 0; y < 8; ++y) {
@@ -138,7 +143,8 @@ public class Chessboard {
 	/**
 	 * When a <code>Pawn</code> reaches the opponent's end of the board it can be
 	 * promoted to a <code>Queen</code>, <code>Rook</code>, <code>Bishop</code> or
-	 * <code>Knight</code> as the player desires.
+	 * <code>Knight</code> as the player desires. This method is used to promote a
+	 * pawn.
 	 * 
 	 * @param pawn the pawn to promote
 	 */
