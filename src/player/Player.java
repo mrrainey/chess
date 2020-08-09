@@ -1,14 +1,22 @@
 package player;
 
+import utilities.Colour;
+
 public class Player {
 	
-	String name;
-	Colour colour;
-	int piecesRemaining;
+	private String name;
+	private Colour colour;
 	
-	
-	public Player(String name, Colour colour) {
-		
+	public Player(String _name, Colour _colour) {
+		name = _name;
+		colour = _colour;
 	}
-	
+
+	public String getName() {
+		return name;
+	}
+
+	public Colour getColour() {
+		return colour;
+	}
 }

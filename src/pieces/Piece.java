@@ -2,6 +2,7 @@ package pieces;
 
 import board.Tile;
 import player.Player;
+import utilities.Colour;
 
 /**
  * @author Saul
@@ -12,6 +13,7 @@ public abstract class Piece {
 	private Tile tile;
 	private int moves;
 	private Player player;
+	private Colour colour;
 
 	/**
 	 * Constructs a new <code>Piece</code> with assigned Player and initial Tile.
@@ -19,19 +21,10 @@ public abstract class Piece {
 	 * @param player the <code>Player</code> to assign the <code>Piece</code> to
 	 * @param tile the <code>Tile</code> to construct the piece on
 	 */
-	public Piece(final Player player, final Tile tile) {
+	public Piece(final Player player) {
 		this.setMoves(0);
 		this.setPlayer(player);
-		this.setTile(tile);
-	}
-	
-	/**
-	 * Constructs a new <code>Piece</code> with a null Player and sets the initial Tile.
-	 * 
-	 * @param tile the <code>Tile</code> to construct the piece on
-	 */
-	public Piece(final Tile tile) {
-		this(null, tile);
+		this.colour = player.getColour();
 	}
 
 	/**

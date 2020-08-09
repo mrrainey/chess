@@ -6,12 +6,8 @@ import player.Player;
 public class Bishop extends Piece {
 
 
-	public Bishop(Player player, Tile tile) {
-		super(player, tile);
-	}
-
-	public Bishop(Tile t) {
-		super(t);
+	public Bishop(Player player) {
+		super(player);
 	}
 
 	@Override

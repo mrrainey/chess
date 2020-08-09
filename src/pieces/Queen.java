@@ -6,13 +6,9 @@ import player.Player;
 public class Queen extends Piece {
 
 
-	public Queen(Player player, Tile tile) {
-		super(player, tile);
+	public Queen(Player player) {
+		super(player);
 		// TODO Auto-generated constructor stub
-	}
-
-	public Queen(Tile t) {
-		super(t);
 	}
 
 	@Override

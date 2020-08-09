@@ -6,12 +6,8 @@ import player.Player;
 public class Knight extends Piece {
 
 
-	public Knight(Player player, Tile tile) {
-		super(player, tile);
-	}
-
-	public Knight(Tile t) {
-		super(t);
+	public Knight(Player player) {
+		super(player);
 	}
 
 	@Override
