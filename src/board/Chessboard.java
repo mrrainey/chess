@@ -63,4 +63,13 @@ public class Chessboard {
 		}	
 		return false;
 	}
+	
+	/**
+	 * When a <code>Pawn</code> reaches the opponent's end of the board it can be promoted to a <code>Queen</code>, <code>Rook</code>, <code>Bishop</code> or <code>Knight</code> as the player desires.
+	 * 
+	 * @param pawn the pawn to promote
+	 */
+	public void promote(Pawn pawn) {
+		// consult player for choice of new Piece and update the piece.
+	}
 }
