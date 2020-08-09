@@ -10,7 +10,7 @@ import player.Player;
 public class Chessboard {
 	public Tile[][] tiles = new Tile[8][8];
 	
-	/*
+	/**
 	 * Creates the chess board tiles and initialises
 	 * them with the corresponding pieces
 	 */
@@ -36,6 +36,7 @@ public class Chessboard {
 			tiles[row][6].setPiece(new Knight(p));
 			tiles[row][7].setPiece(new Rook(p));
 		}
+		
 	}
 
 	public Piece getPiece(int x, int y) {
@@ -45,6 +46,7 @@ public class Chessboard {
 	/**
 	 * Records the movement of a <code>Piece</code> to a new <code>Tile</code> in the game logic,
 	 * provided that the particular piece can legally move to the tile.
+	 * 
 	 * @param piece the <code>piece</code> to move
 	 * @param newTile the <code>tile</code> to move it to
 	 * @return whether or not the piece was able to be successfully moved to the new tile
@@ -52,6 +54,9 @@ public class Chessboard {
 	public boolean move(Piece piece, Tile newTile) {
 		if (piece.canMove(newTile)) {
 			piece.getTile().setPiece(null);
+			if (!newTile.isEmpty()) {
+				newTile.getPiece().kill();
+			}
 			piece.setTile(newTile);
 			newTile.setPiece(piece);
 			return true;
