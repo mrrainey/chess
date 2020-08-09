@@ -14,6 +14,7 @@ public class Tile {
 		setX(_x);
 		setY(_y);
 	}
+	
 	public int getX() {
 		return x;
 	}
