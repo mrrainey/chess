@@ -41,4 +41,21 @@ public class Chessboard {
 	public Piece getPiece(int x, int y) {
 		return tiles[x][y].getPiece();
 	}
+	
+	/**
+	 * Records the movement of a <code>Piece</code> to a new <code>Tile</code> in the game logic,
+	 * provided that the particular piece can legally move to the tile.
+	 * @param piece the <code>piece</code> to move
+	 * @param newTile the <code>tile</code> to move it to
+	 * @return whether or not the piece was able to be successfully moved to the new tile
+	 */
+	public boolean move(Piece piece, Tile newTile) {
+		if (piece.canMove(newTile)) {
+			piece.getTile().setPiece(null);
+			piece.setTile(newTile);
+			newTile.setPiece(piece);
+			return true;
+		}	
+		return false;
+	}
 }
