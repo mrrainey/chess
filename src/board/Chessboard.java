@@ -1,5 +1,7 @@
 package board;
 
+import pieces.Piece;
+
 /**
  * @author Matt
  */
@@ -31,5 +33,22 @@ public class Chessboard {
 //			board[row][3].piece = Queen(colour)
 //			board[row][4].piece = King(colour)
 		}
+	}
+	
+	/**
+	 * Records the movement of a <code>Piece</code> to a new <code>Tile</code> in the game logic,
+	 * provided that the particular piece can legally move to the tile.
+	 * @param piece the <code>piece</code> to move
+	 * @param newTile the <code>tile</code> to move it to
+	 * @return whether or not the piece was able to be successfully moved to the new tile
+	 */
+	public boolean move(Piece piece, Tile newTile) {
+		if (piece.canMove(newTile)) {
+			piece.getTile().setPiece(null);
+			piece.setTile(newTile);
+			newTile.setPiece(piece);
+			return true;
+		}	
+		return false;
 	}
 }
