@@ -14,7 +14,7 @@ public class Rook extends Piece {
 	@Override
 	public boolean canMove(Tile t) {
 		// movement logic
-		return false;
+		return true;
 	}
 	
 	
