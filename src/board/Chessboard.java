@@ -9,12 +9,16 @@ import player.Player;
 
 public class Chessboard {
 	public Tile[][] tiles = new Tile[8][8];
+	public final Player player1;
+	public final Player player2;
 
 	/**
 	 * Creates the chess board tiles and initialises them with the corresponding
 	 * pieces
 	 */
-	public Chessboard(Player p1, Player p2) {
+	public Chessboard(final Player p1, final Player p2) {
+		this.player1 = p1;
+		this.player2 = p2;
 		for (int x = 0; x < 8; ++x)
 			for (int y = 0; y < 8; ++y)
 				tiles[x][y] = new Tile(x, y);
@@ -86,13 +90,13 @@ public class Chessboard {
 	public boolean move(Piece piece, Tile newTile) {
 		if (piece.canMove(newTile)) {
 			piece.getTile().setPiece(null);
-			if (!newTile.isEmpty()) {
+			if (!newTile.isEmpty()) 
 				newTile.getPiece().kill();
-			}
 			piece.setTile(newTile);
 			newTile.setPiece(piece);
 			return true;
 		}
+		System.err.println("Piece " + piece + " could not move to tile " + newTile);
 		return false;
 	}
 
@@ -102,12 +106,12 @@ public class Chessboard {
 	 * on the board to <code>System.out</code>.
 	 */
 	public void printSnapshot() {
+		System.out.println(">---------- Player 2: " + getPlayer2().getName() + " ----------<");
 		for (int x = 0; x < 8; ++x)
 			for (int y = 0; y < 8; ++y) {
 				Piece p = getPiece(x, y);
 				String name = "     ";
 				if (p != null) {
-					// System.out.println(p.getClass().getSimpleName());
 					switch (p.getClass().getSimpleName()) {
 
 					case "Bishop":
@@ -136,8 +140,9 @@ public class Chessboard {
 				if (y < 7)
 					System.out.print(name + " ");
 				else
-					System.out.println(name);
+					System.out.println(name);	
 			}
+		System.out.println(">---------- Player 1: " + getPlayer1().getName() + " ----------<");
 	}
 
 	/**
@@ -151,4 +156,19 @@ public class Chessboard {
 	public void promote(Pawn pawn) {
 		// consult player for choice of new Piece and update the piece.
 	}
+
+	/**
+	 * @return the player1
+	 */
+	public Player getPlayer1() {
+		return player1;
+	}
+
+	/**
+	 * @return the player2
+	 */
+	public Player getPlayer2() {
+		return player2;
+	}
+	
 }
