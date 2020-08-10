@@ -1,5 +1,4 @@
 package chess;
-import java.io.Console;
 import java.util.Random;
 
 import board.*;
@@ -34,11 +33,11 @@ public class Chess {
 		
 		setBoard(new Chessboard(p1, p2));
 		
-		/*Piece p = board.getPiece(0, 1);
-		board.printSnapshot();
+		Piece p = board.getPiece(0, 0);
+		//board.printSnapshot();
 		board.move(p, board.tiles[1][5]);
 		board.move(p, board.tiles[2][5]);
-		board.printSnapshot();*/
+		board.printSnapshot();
 		
 		Tile t1 = board.getTile(0, 1);
 		Tile t2 = board.getTile(1, 1);
