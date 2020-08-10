@@ -58,4 +58,11 @@ public class Tile {
 	public boolean isEmpty() {
 		return piece == null;
 	}
+	
+	@Override
+	public String toString() {
+		return String.valueOf(x) + "," + String.valueOf(y) + (isEmpty() ? "" : " <" + getPiece() + ">");
+	}
+	
+	
 }
