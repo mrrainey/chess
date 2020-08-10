@@ -134,6 +134,13 @@ public abstract class Piece {
 	 * Destroys the piece so that it can no longer be used.
 	 */
 	public void kill() {
+		getTile().setPiece(null);
 		setTile(null);
+		System.out.println("Piece " + this.getClass().getSimpleName() + " was killed.");
+	}
+	
+	@Override
+	public String toString() {
+		return this.getClass().getSimpleName();
 	}
 }
