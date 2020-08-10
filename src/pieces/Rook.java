@@ -2,6 +2,7 @@ package pieces;
 
 import board.Tile;
 import player.Player;
+import utilities.Navigation;
 
 public class Rook extends Piece {
 
@@ -13,8 +14,10 @@ public class Rook extends Piece {
 
 	@Override
 	public boolean canMove(Tile t) {
-		// movement logic
-		return false;
+		if (Navigation.isCardinal(getTile(), t)) {
+			
+		}
+		return true;
 	}
 	
 	

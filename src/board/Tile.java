@@ -32,7 +32,7 @@ public class Tile {
 	}
 
 	/**
-	 * Gets the <code>Piece</code> on this the tile.
+	 * Gets the <code>Piece</code> on the tile.
 	 * 
 	 * @return the piece currently on the tile, or <code>null</code> if there isn't
 	 *         one
@@ -41,6 +41,11 @@ public class Tile {
 		return piece;
 	}
 
+	/**
+	 * Sets the <code>Piece</code> that is occupying the tile.
+	 * 
+	 * @param piece the piece to be recorded on the tile
+	 */
 	public void setPiece(Piece piece) {
 		this.piece = piece;
 	}
@@ -53,4 +58,11 @@ public class Tile {
 	public boolean isEmpty() {
 		return piece == null;
 	}
+	
+	@Override
+	public String toString() {
+		return String.valueOf(x) + "," + String.valueOf(y) + (isEmpty() ? "" : " <" + getPiece() + ">");
+	}
+	
+	
 }
