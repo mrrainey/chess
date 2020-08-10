@@ -136,7 +136,7 @@ public abstract class Piece {
 	public void kill() {
 		getTile().setPiece(null);
 		setTile(null);
-		System.out.println("Piece " + this.getClass().getSimpleName() + " was killed.");
+		System.out.println("Piece " + this + " was killed.");
 	}
 	
 	@Override
