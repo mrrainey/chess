@@ -109,8 +109,9 @@ public class Chessboard {
 		System.out.println(">---------- Player 2: " + getPlayer2().getName() + " ----------<");
 		for (int x = 0; x < 8; ++x)
 			for (int y = 0; y < 8; ++y) {
+				Tile t = getTile(x, y);
 				Piece p = getPiece(x, y);
-				String name = "     ";
+				String name = t.toString();
 				if (p != null) {
 					switch (p.getClass().getSimpleName()) {
 
