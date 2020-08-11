@@ -35,15 +35,15 @@ public class Chess {
 		
 		Piece p = board.getPiece(0, 0);
 		//board.printSnapshot();
-		board.move(p, board.tiles[1][5]);
-		board.move(p, board.tiles[2][5]);
+		board.move(p, board.tiles[0][0]);
+		board.move(p, board.tiles[2][0]);
 		board.printSnapshot();
 		
-		Tile t1 = board.getTile(0, 1);
-		Tile t2 = board.getTile(1, 1);
-		System.out.println(Navigation.isOrdinal(t1, t2));
+		Tile t1 = board.getTile(0, 0);
+		Tile t2 = board.getTile(4, 0);
 				
-
+		//Navigation.printPath(Navigation.getPath(board.tiles[3][0], board.tiles[3][5]));
+		System.out.println(Navigation.getDistance(t1, t2));
 	}
 
 	/**
