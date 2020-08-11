@@ -3,7 +3,6 @@
  */
 package utilities;
 
-
 import board.Tile;
 import chess.Chess;
 
@@ -57,41 +56,52 @@ public class Navigation {
 	 *         target tile and exclusive of the origin
 	 */
 	public static Tile[] getPath(Tile origin, Tile target) {
+		int dist = getDistance(origin, target);
+		Tile[] path = new Tile[dist];
 		switch (getDirection(origin, target)) {
-		case East: {
-			Tile[] path = new Tile[target.getY() - origin.getY()];
-			int c = 0;
-			for (int i = origin.getY(); i < target.getY(); i++) {
-				path[c] = Chess.getBoard().getTile(origin.getX(), i + 1);
-				c++;
+		case East:
+			for (int i = 1; i < dist; i++) {
+				path[i - 1] = Chess.getBoard().getTile(origin.getX(), origin.getY() + i);
 			}
 			return path;
-		}
 		case North:
-			Tile[] path = new Tile[origin.getX() - target.getX()];
-			int c = 0;
-			for (int i = origin.getX(); i > target.getX(); i--) {
-				path[c] = Chess.getBoard().getTile(i - 1, origin.getX());
+			for (int i = 1; i < dist; i++) {
+				path[i - 1] = Chess.getBoard().getTile(origin.getX() - i, origin.getY());
 			}
 			return path;
 		case NorthEast:
-			// Tile[] path = new Tile();
-			break;
+			for (int i = 1; i < dist; i++) {
+				path[i - 1] = Chess.getBoard().getTile(origin.getX() - i, origin.getY() + i);
+			}
+			return path;
 		case NorthWest:
-			break;
+			for (int i = 1; i < dist; i++) {
+				path[i - 1] = Chess.getBoard().getTile(origin.getX() - i, origin.getY() - i);
+			}
+			return path;
 		case South:
-			break;
+			for (int i = 1; i < dist; i++) {
+				path[i - 1] = Chess.getBoard().getTile(origin.getX() + i, origin.getY());
+			}
+			return path;
 		case SouthEast:
-			break;
+			for (int i = 1; i < dist; i++) {
+				path[i - 1] = Chess.getBoard().getTile(origin.getX() + i, origin.getY() + i);
+			}
+			return path;
 		case SouthWest:
-			break;
+			for (int i = 1; i < dist; i++) {
+				path[i - 1] = Chess.getBoard().getTile(origin.getX() + i, origin.getY() - i);
+			}
+			return path;
 		case West:
-			break;
+			for (int i = 1; i < dist; i++) {
+				path[i - 1] = Chess.getBoard().getTile(origin.getX(), origin.getY() + i);
+			}
+			return path;
 		default:
-			break;
+			return null;
 		}
-		return null;
-
 	}
 
 	/**
@@ -166,9 +176,10 @@ public class Navigation {
 	 * 
 	 * @param from the start tile
 	 * @param to   the end tile
-	 * @return <code>int</code> value greater than or equal to <code>0</code>, representing the
-	 *         distance between the start and end tiles; or <code>-1</code> if the tiles are
-	 *         neither ordinal or cardinal of each other
+	 * @return <code>int</code> value greater than or equal to <code>0</code>,
+	 *         representing the distance between the start and end tiles; or
+	 *         <code>-1</code> if the tiles are neither ordinal or cardinal of each
+	 *         other
 	 */
 	public static int getDistance(Tile from, Tile to) {
 
