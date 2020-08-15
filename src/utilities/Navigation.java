@@ -60,48 +60,47 @@ public class Navigation {
 		Tile[] path = new Tile[dist];
 		switch (getDirection(origin, target)) {
 		case East:
-			for (int i = 1; i < dist; i++) {
-				path[i - 1] = Chess.getBoard().getTile(origin.getX(), origin.getY() + i);
+			for (int i = 0; i < dist; i++) {
+				path[i] = Chess.getBoard().getTile(origin.getX(), origin.getY() + (i+1));
 			}
 			return path;
 		case North:
-			for (int i = 1; i < dist; i++) {
-				path[i - 1] = Chess.getBoard().getTile(origin.getX() - i, origin.getY());
+			for (int i = 0; i < dist; i++) {
+				path[i] = Chess.getBoard().getTile(origin.getX() - (i+1), origin.getY());
 			}
 			return path;
 		case NorthEast:
-			for (int i = 1; i < dist; i++) {
-				path[i - 1] = Chess.getBoard().getTile(origin.getX() - i, origin.getY() + i);
+			for (int i = 0; i < dist; i++) {
+				path[i] = Chess.getBoard().getTile(origin.getX() - (i+1), origin.getY() + (i+1));
 			}
 			return path;
 		case NorthWest:
-			for (int i = 1; i < dist; i++) {
-				path[i - 1] = Chess.getBoard().getTile(origin.getX() - i, origin.getY() - i);
+			for (int i = 0; i < dist; i++) {
+				path[i] = Chess.getBoard().getTile(origin.getX() - (i+1), origin.getY() - (i+1));
 			}
 			return path;
 		case South:
-			for (int i = 1; i < dist; i++) {
-				path[i - 1] = Chess.getBoard().getTile(origin.getX() + i, origin.getY());
+			for (int i = 0; i < dist; i++) {
+				path[i] = Chess.getBoard().getTile(origin.getX() + (i+1), origin.getY());
 			}
 			return path;
 		case SouthEast:
-			for (int i = 1; i < dist; i++) {
-				path[i - 1] = Chess.getBoard().getTile(origin.getX() + i, origin.getY() + i);
+			for (int i = 0; i < dist; i++) {
+				path[i] = Chess.getBoard().getTile(origin.getX() + (i+1), origin.getY() + (i+1));
 			}
 			return path;
 		case SouthWest:
-			for (int i = 1; i < dist; i++) {
-				path[i - 1] = Chess.getBoard().getTile(origin.getX() + i, origin.getY() - i);
+			for (int i = 0; i < dist; i++) {
+				path[i] = Chess.getBoard().getTile(origin.getX() + (i+1), origin.getY() - (i+1));
 			}
 			return path;
 		case West:
-			for (int i = 1; i < dist; i++) {
-				path[i - 1] = Chess.getBoard().getTile(origin.getX(), origin.getY() + i);
+			for (int i = 0; i < dist; i++) {
+				path[i] = Chess.getBoard().getTile(origin.getX(), origin.getY() + (i+1));
 			}
 			return path;
-		default:
-			return null;
 		}
+		return null;
 	}
 
 	/**
