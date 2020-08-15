@@ -12,7 +12,7 @@ public class Pawn extends Piece {
 	@Override
 	public boolean canMove(Tile t) {
 		// pawn movement logic
-		return false;
+		return true;
 	}
 	
 	

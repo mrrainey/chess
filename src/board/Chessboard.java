@@ -88,29 +88,34 @@ public class Chessboard {
 	 *         tile
 	 */
 	public boolean move(Piece piece, Tile newTile) {
-		if (piece.canMove(newTile)) {
-			piece.getTile().setPiece(null);
-			if (!newTile.isEmpty()) 
-				newTile.getPiece().kill();
-			piece.setTile(newTile);
-			newTile.setPiece(piece);
-			return true;
+		if (piece != null) {
+			if (piece.canMove(newTile)) {
+				piece.getTile().setPiece(null);
+				if (!newTile.isEmpty())
+					newTile.getPiece().kill();
+				piece.setTile(newTile);
+				newTile.setPiece(piece);
+				return true;
+			}
+			System.err.println("Piece " + piece + " could not move to tile " + newTile);
+		} else {
+			System.err.println("No piece found");
 		}
-		System.err.println("Piece " + piece + " could not move to tile " + newTile);
 		return false;
 	}
 
 	/**
 	 * This method is intended for debugging and may be removed in the future.<br>
-	 * This method will print a snapshot of all the <code>Piece</code> positions
-	 * on the board to <code>System.out</code>.
+	 * This method will print a snapshot of all the <code>Piece</code> positions on
+	 * the board to <code>System.out</code>.
 	 */
 	public void printSnapshot() {
 		System.out.println(">---------- Player 2: " + getPlayer2().getName() + " ----------<");
 		for (int x = 0; x < 8; ++x)
 			for (int y = 0; y < 8; ++y) {
+				Tile t = getTile(x, y);
 				Piece p = getPiece(x, y);
-				String name = "     ";
+				String name = t.toString();
 				if (p != null) {
 					switch (p.getClass().getSimpleName()) {
 
@@ -140,7 +145,7 @@ public class Chessboard {
 				if (y < 7)
 					System.out.print(name + " ");
 				else
-					System.out.println(name);	
+					System.out.println(name);
 			}
 		System.out.println(">---------- Player 1: " + getPlayer1().getName() + " ----------<");
 	}
@@ -170,5 +175,5 @@ public class Chessboard {
 	public Player getPlayer2() {
 		return player2;
 	}
-	
+
 }

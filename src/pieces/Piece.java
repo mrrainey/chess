@@ -19,7 +19,7 @@ public abstract class Piece {
 	 * Constructs a new <code>Piece</code> with assigned Player and initial Tile.
 	 * 
 	 * @param player the <code>Player</code> to assign the <code>Piece</code> to
-	 * @param tile the <code>Tile</code> to construct the piece on
+	 * @param tile   the <code>Tile</code> to construct the piece on
 	 */
 	public Piece(final Player player) {
 		this.setMoves(0);
@@ -28,13 +28,14 @@ public abstract class Piece {
 	}
 
 	/**
-	 * Determines whether a piece can legally move to a tile. Handled by each Piece subclass.
+	 * Determines whether a piece can legally move to a tile. Handled by each Piece
+	 * subclass.
 	 * 
-	 * @param t The tile test for a legal movement
+	 * @param target The tile test for a legal movement
 	 * @return true if the piece can legally move to the tile, false if not
 	 * 
 	 */
-	public abstract boolean canMove(final Tile t);
+	public abstract boolean canMove(final Tile target);
 
 	/**
 	 * Gets an array of all the tiles that the piece can legally move to
@@ -53,7 +54,7 @@ public abstract class Piece {
 	public int getMoves() {
 		return moves;
 	}
-	
+
 	/**
 	 * Gets the <code>Player</code> that the piece belongs to.
 	 * 
@@ -124,21 +125,22 @@ public abstract class Piece {
 
 	/**
 	 * Sets the colour of the piece.
+	 * 
 	 * @param colour the piece's colour
 	 */
 	public void setColour(Colour colour) {
 		this.colour = colour;
 	}
-	
+
 	/**
 	 * Destroys the piece so that it can no longer be used.
 	 */
 	public void kill() {
 		getTile().setPiece(null);
 		setTile(null);
-		System.out.println("Piece " + this.getClass().getSimpleName() + " was killed.");
+		System.out.println("Piece " + this + " was killed.");
 	}
-	
+
 	@Override
 	public String toString() {
 		return this.getClass().getSimpleName();
