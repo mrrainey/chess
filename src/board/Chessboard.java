@@ -95,6 +95,7 @@ public class Chessboard {
 					newTile.getPiece().kill();
 				piece.setTile(newTile);
 				newTile.setPiece(piece);
+				piece.setMoves(piece.getMoves() + 1);
 				return true;
 			}
 			System.err.println("Piece " + piece + " could not move to tile " + newTile);
