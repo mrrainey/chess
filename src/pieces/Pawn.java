@@ -11,10 +11,10 @@ public class Pawn extends Piece {
 	public Pawn(final Player player) {
 		super(player);
 	}
-
+	
 	@Override
 	public boolean canMove(Tile target) {
-		Navigation.Direction dir = Navigation.getDirection(getTile(), target);
+		Direction dir = Navigation.getDirection(getTile(), target);
 		int dist = Navigation.getDistance(getTile(), target);
 		if (dir == (getPlayer() == Chess.getBoard().getPlayer1() ? Direction.South : Direction.North)) {
 			if (target.isEmpty()) {
