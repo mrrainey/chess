@@ -74,20 +74,6 @@ public abstract class Piece {
 	}
 
 	/**
-	 * Moves the piece to a tile
-	 * 
-	 * @param t The tile to move to
-	 * 
-	 */
-	public boolean move(final Tile t) {
-		if (canMove(t)) {
-			setTile(t);
-			return true;
-		}
-		return false;
-	}
-
-	/**
 	 * Sets the amount of moves this piece has made
 	 * 
 	 * @param moves the number of moves the piece has made
