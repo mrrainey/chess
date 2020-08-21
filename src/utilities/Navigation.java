@@ -3,8 +3,10 @@
  */
 package utilities;
 
+import board.Chessboard;
 import board.Tile;
 import chess.Chess;
+import pieces.Knight;
 
 /**
  * @author Saul
@@ -61,45 +63,82 @@ public class Navigation {
 		switch (getDirection(origin, target)) {
 		case East:
 			for (int i = 0; i < dist; i++) {
-				path[i] = Chess.getBoard().getTile(origin.getX(), origin.getY() + (i+1));
+				path[i] = Chess.getBoard().getTile(origin.getX(), origin.getY() + (i + 1));
 			}
 			return path;
 		case North:
 			for (int i = 0; i < dist; i++) {
-				path[i] = Chess.getBoard().getTile(origin.getX() - (i+1), origin.getY());
+				path[i] = Chess.getBoard().getTile(origin.getX() - (i + 1), origin.getY());
 			}
 			return path;
 		case NorthEast:
 			for (int i = 0; i < dist; i++) {
-				path[i] = Chess.getBoard().getTile(origin.getX() - (i+1), origin.getY() + (i+1));
+				path[i] = Chess.getBoard().getTile(origin.getX() - (i + 1), origin.getY() + (i + 1));
 			}
 			return path;
 		case NorthWest:
 			for (int i = 0; i < dist; i++) {
-				path[i] = Chess.getBoard().getTile(origin.getX() - (i+1), origin.getY() - (i+1));
+				path[i] = Chess.getBoard().getTile(origin.getX() - (i + 1), origin.getY() - (i + 1));
 			}
 			return path;
 		case South:
 			for (int i = 0; i < dist; i++) {
-				path[i] = Chess.getBoard().getTile(origin.getX() + (i+1), origin.getY());
+				path[i] = Chess.getBoard().getTile(origin.getX() + (i + 1), origin.getY());
 			}
 			return path;
 		case SouthEast:
 			for (int i = 0; i < dist; i++) {
-				path[i] = Chess.getBoard().getTile(origin.getX() + (i+1), origin.getY() + (i+1));
+				path[i] = Chess.getBoard().getTile(origin.getX() + (i + 1), origin.getY() + (i + 1));
 			}
 			return path;
 		case SouthWest:
 			for (int i = 0; i < dist; i++) {
-				path[i] = Chess.getBoard().getTile(origin.getX() + (i+1), origin.getY() - (i+1));
+				path[i] = Chess.getBoard().getTile(origin.getX() + (i + 1), origin.getY() - (i + 1));
 			}
 			return path;
 		case West:
 			for (int i = 0; i < dist; i++) {
-				path[i] = Chess.getBoard().getTile(origin.getX(), origin.getY() + (i+1));
+				path[i] = Chess.getBoard().getTile(origin.getX(), origin.getY() + (i + 1));
 			}
 			return path;
 		}
+		return null;
+	}
+
+	/**
+	 * Generates a path between two tiles for a Knight piece. Similar to
+	 * {@code getPath()} except this returns one of two possible paths for a Knight.
+	 * Since Knights can always potentially take two paths to get to the same target
+	 * tile, this function supports generation of both.
+	 * 
+	 * @param origin the start tile
+	 * @param target the tile to path to
+	 * @return array of tiles to the target tile, excluding the origin, for a Knight
+	 */
+	public static Tile[] getKnightPath(final Tile origin, final Tile target) {
+		final int x1 = origin.getX();
+		final int x2 = target.getX();
+		final int y1 = origin.getY();
+		final int y2 = target.getY();
+		final int distX = x2 - x1;
+		final int distY = y2 - y1;
+		final Chessboard board = Chess.getBoard();
+		final Tile[] path1;
+		final Tile[] path2;
+		if (Math.abs(distX) == 1 && Math.abs(distY) == 2) {
+			path1 = new Tile[] { board.getTile(x1, y1 + (distY / 2)), board.getTile(x1, y1 + distY),
+					board.getTile(x1 + distX, y1 + distY) };
+			path2 = new Tile[] { board.getTile(x1 + distX, y1), board.getTile(x1 + distX, y1 + (distY / 2)),
+					board.getTile(x1 + distX, y1 + distY) };
+			return path1;
+		} else if (Math.abs(distX) == 2 && Math.abs(distY) == 1) {
+			path1 = new Tile[] { board.getTile(x1 + (distX / 2), y1), board.getTile(x1 + distX, y1),
+					board.getTile(x1 + distX, y1 + distY) };
+			path2 = new Tile[] { board.getTile(x1, y1 + distY), board.getTile(x1 + (distX / 2), y1 + distY),
+					board.getTile(x1 + distX, y1 + distY) };
+			return path1;
+		}
+		// TODO add support for user's choice between path1 and path2
 		return null;
 	}
 

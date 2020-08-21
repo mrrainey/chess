@@ -70,7 +70,9 @@ public class TextBoard {
 		for (int row = 0; row < numRows; row++) {
 			buffer = buffer + getRowText(row);
 		}
+		out.println("Player 1 : "+ getBoard().getPlayer1().getName());
 		out.println(buffer);
+		out.println("Player 2 : "+ getBoard().getPlayer2().getName());
 	}
 
 	public String getRowText(int row) {
@@ -103,10 +105,5 @@ public class TextBoard {
 	 */
 	public void setTiles(Tile[][] tiles) {
 		this.tiles = tiles;
-	}
-
-	private class BoardTile {
-		public String[] lines;
-
 	}
 }
