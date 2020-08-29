@@ -15,22 +15,25 @@ public class Chessboard {
 	/**
 	 * Creates the chess board tiles and initialises them with the corresponding
 	 * pieces
+	 * 
+	 * @param player1 the game's player 1
+	 * @param player2 the game's player 2
 	 */
-	public Chessboard(final Player p1, final Player p2) {
-		this.player1 = p1;
-		this.player2 = p2;
+	public Chessboard(final Player player1, final Player player2) {
+		this.player1 = player1;
+		this.player2 = player2;
 		for (int x = 0; x < 8; ++x)
 			for (int y = 0; y < 8; ++y)
 				tiles[x][y] = new Tile(x, y);
 
 		for (int y = 0; y < 8; ++y) {
-			createPiece(new Pawn(p1), tiles[1][y]);
-			createPiece(new Pawn(p2), tiles[6][y]);
+			createPiece(new Pawn(player1), tiles[1][y]);
+			createPiece(new Pawn(player2), tiles[6][y]);
 		}
 
 		int[] rows = { 0, 7 };
 		for (int row : rows) {
-			Player p = row == 0 ? p1 : p2;
+			Player p = row == 0 ? player1 : player2;
 			createPiece(new Rook(p), tiles[row][0]);
 			createPiece(new Knight(p), tiles[row][1]);
 			createPiece(new Bishop(p), tiles[row][2]);
@@ -49,10 +52,15 @@ public class Chessboard {
 	 * 
 	 * @param piece the piece to initialise
 	 * @param tile  the tile to be linked
+	 * @throws IllegalArgumentException if the tile already contains a piece.
 	 */
 	private void createPiece(Piece piece, Tile tile) {
-		tile.setPiece(piece);
-		piece.setTile(tile);
+		if (tile.isEmpty()) {
+			tile.setPiece(piece);
+			piece.setTile(tile);
+		} else {
+			throw new IllegalArgumentException("Tile already contains a piece.");
+		}
 	}
 
 	/**
@@ -119,28 +127,27 @@ public class Chessboard {
 				String name = t.toString();
 				if (p != null) {
 					switch (p.getClass().getSimpleName()) {
-
-					case "Bishop":
-						name = "Bshp ";
-						break;
-					case "King":
-						name = "King ";
-						break;
-					case "Knight":
-						name = "Knght";
-						break;
-					case "Pawn":
-						name = "Pawn ";
-						break;
-					case "Queen":
-						name = "Queen";
-						break;
-					case "Rook":
-						name = "Rook ";
-						break;
-
-					default:
-						break;
+						case "Bishop": {
+							name = "Bshp ";
+							break;
+						}
+						case "King":
+							name = "King ";
+							break;
+						case "Knight":
+							name = "Knght";
+							break;
+						case "Pawn":
+							name = "Pawn ";
+							break;
+						case "Queen":
+							name = "Queen";
+							break;
+						case "Rook":
+							name = "Rook ";
+							break;
+						default:
+							break;
 					}
 				}
 				if (y < 7)
