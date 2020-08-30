@@ -50,7 +50,7 @@ public class Navigation {
 	}
 
 	/**
-	 * Generates a path from the origin tile to the target tile.
+	 * Generates a path (array of tiles) from the origin tile to the target tile.
 	 * 
 	 * @param origin the origin tile
 	 * @param target the target tile to path to
@@ -61,46 +61,46 @@ public class Navigation {
 		int dist = getDistance(origin, target);
 		Tile[] path = new Tile[dist];
 		switch (getDirection(origin, target)) {
-		case East:
-			for (int i = 0; i < dist; i++) {
-				path[i] = Chess.getBoard().getTile(origin.getX(), origin.getY() + (i + 1));
-			}
-			return path;
-		case North:
-			for (int i = 0; i < dist; i++) {
-				path[i] = Chess.getBoard().getTile(origin.getX() - (i + 1), origin.getY());
-			}
-			return path;
-		case NorthEast:
-			for (int i = 0; i < dist; i++) {
-				path[i] = Chess.getBoard().getTile(origin.getX() - (i + 1), origin.getY() + (i + 1));
-			}
-			return path;
-		case NorthWest:
-			for (int i = 0; i < dist; i++) {
-				path[i] = Chess.getBoard().getTile(origin.getX() - (i + 1), origin.getY() - (i + 1));
-			}
-			return path;
-		case South:
-			for (int i = 0; i < dist; i++) {
-				path[i] = Chess.getBoard().getTile(origin.getX() + (i + 1), origin.getY());
-			}
-			return path;
-		case SouthEast:
-			for (int i = 0; i < dist; i++) {
-				path[i] = Chess.getBoard().getTile(origin.getX() + (i + 1), origin.getY() + (i + 1));
-			}
-			return path;
-		case SouthWest:
-			for (int i = 0; i < dist; i++) {
-				path[i] = Chess.getBoard().getTile(origin.getX() + (i + 1), origin.getY() - (i + 1));
-			}
-			return path;
-		case West:
-			for (int i = 0; i < dist; i++) {
-				path[i] = Chess.getBoard().getTile(origin.getX(), origin.getY() + (i + 1));
-			}
-			return path;
+			case East:
+				for (int i = 0; i < dist; i++) {
+					path[i] = Chess.getBoard().getTile(origin.getX(), origin.getY() + (i + 1));
+				}
+				return path;
+			case North:
+				for (int i = 0; i < dist; i++) {
+					path[i] = Chess.getBoard().getTile(origin.getX() - (i + 1), origin.getY());
+				}
+				return path;
+			case NorthEast:
+				for (int i = 0; i < dist; i++) {
+					path[i] = Chess.getBoard().getTile(origin.getX() - (i + 1), origin.getY() + (i + 1));
+				}
+				return path;
+			case NorthWest:
+				for (int i = 0; i < dist; i++) {
+					path[i] = Chess.getBoard().getTile(origin.getX() - (i + 1), origin.getY() - (i + 1));
+				}
+				return path;
+			case South:
+				for (int i = 0; i < dist; i++) {
+					path[i] = Chess.getBoard().getTile(origin.getX() + (i + 1), origin.getY());
+				}
+				return path;
+			case SouthEast:
+				for (int i = 0; i < dist; i++) {
+					path[i] = Chess.getBoard().getTile(origin.getX() + (i + 1), origin.getY() + (i + 1));
+				}
+				return path;
+			case SouthWest:
+				for (int i = 0; i < dist; i++) {
+					path[i] = Chess.getBoard().getTile(origin.getX() + (i + 1), origin.getY() - (i + 1));
+				}
+				return path;
+			case West:
+				for (int i = 0; i < dist; i++) {
+					path[i] = Chess.getBoard().getTile(origin.getX(), origin.getY() + (i + 1));
+				}
+				return path;
 		}
 		return null;
 	}
@@ -138,7 +138,19 @@ public class Navigation {
 					board.getTile(x1 + distX, y1 + distY) };
 			return path1;
 		}
-		// TODO add support for user's choice between path1 and path2
+		/*
+		 * TODO add support for player's choice between path1 and path2 because Knights
+		 * can often take two different paths to get to the same tile.
+		 * 
+		 * For example if a Knight wants to move two tiles East and one tile North it
+		 * can either move North then East(x2), or it can move East(x2) before moving
+		 * North.
+		 * 
+		 * Due to this it may be advantageous to the player to choose one path over the
+		 * other as one path may contain an enemy piece, or both paths may contain an
+		 * enemy piece one of which may be more desirable to pwn. *
+		 */
+
 		return null;
 	}
 

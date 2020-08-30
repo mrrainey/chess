@@ -6,11 +6,10 @@ import java.io.InputStreamReader;
 import java.util.Random;
 import java.util.Scanner;
 
-import board.*;
-import pieces.Piece;
+import board.Chessboard;
+import board.Tile;
 import player.Player;
 import utilities.Colour;
-import utilities.Navigation;
 import utilities.text.TextBoard;
 
 public class Chess {
@@ -63,8 +62,11 @@ public class Chess {
 	/**
 	 * Takes the input of the {@code BufferedReader} and interprets it. Intended to
 	 * be used with {@code System.in} in order to take commands to test the Chess logic.
-	 * 
+	 * <br>
+	 * <br>
 	 * Allowed commands are:
+	 * <br>
+	 * {@code move <coord1> <coord2>} - moves the piece at {@code coord1} to tile at {@code coord2}.
 	 * 
 	 * @deprecated This method is used for testing purposes and is likely to be
 	 *             removed in the future.
